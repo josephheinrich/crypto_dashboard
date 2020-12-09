@@ -8,7 +8,7 @@ const List = (props) => {
     if (!cryptos || cryptos.length === 0) return <p>No cryptos, sorry</p>;
 
     for (var i = 0; i < cryptos.length; i++) {
-        if (!cryptos[i]["1d"]) {
+        if (!cryptos[i]) {
             return <p>No 1d price change</p>
         }
     }
@@ -17,7 +17,7 @@ const List = (props) => {
         <div className="row">
             {cryptos.map((crypto) => {
                 return (
-                    <div className="col-4 cryptoBox" key={crypto.id}>
+                    <div className="col-md-4 col-sm-6 cryptoBox" key={crypto.id}>
                         <div className="cryptoContent">
                             <p>
                                 {crypto.name} ({crypto.id})
