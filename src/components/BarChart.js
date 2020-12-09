@@ -9,8 +9,10 @@ const BarChart = ({ newCrypto }) => {
     const [state, setState] = useState({ Data: {} });
 
     useEffect(() => {
-        axios.get("https://api.nomics.com/v1/currencies/ticker?key=a3d32784b7faaeefea98384862fa0cc2&ids=" + cryptosToCall.newCrypto + "&interval=1d,30d&per-page=100&page=1")
-            .then(cryptoList => {
+        axios.get("https://cors-anywhere.herokuapp.com/https://api.nomics.com/v1/currencies/ticker?key=a3d32784b7faaeefea98384862fa0cc2&ids=" + cryptosToCall.newCrypto + "&interval=1d,30d&per-page=100&page=1", {
+            headers: { "Access-Control-Allow-Origin": true },
+            mode: 'cors'
+        }).then(cryptoList => {
                 console.log(cryptoList);
                 const cryptoData = cryptoList.data;
                 let cryptoname = [];

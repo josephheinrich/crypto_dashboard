@@ -11,10 +11,13 @@ function App() {
 
     const [newCrypto, setNewCrypto] = useState("BTC, ETH, XRP");
 
-    const apiURL = "https://api.nomics.com/v1/currencies/ticker?key=a3d32784b7faaeefea98384862fa0cc2&ids=" + newCrypto + "&interval=1d,30d&per-page=100&page=1";
+    const apiURL = "https://cors-anywhere.herokuapp.com/https://api.nomics.com/v1/currencies/ticker?key=a3d32784b7faaeefea98384862fa0cc2&ids=" + newCrypto + "&interval=1d,30d&per-page=100&page=1";
 
     const getPosts = async () => {
-        axios.get(apiURL, {crossdomain: true}).then((cryptos) => {
+        axios.get(apiURL, {
+            headers: { "Access-Control-Allow-Origin": true},
+            mode: 'cors'
+        }).then((cryptos) => {
             console.log(cryptos.data);
             setCryptos({ cryptos: cryptos.data })
         })
