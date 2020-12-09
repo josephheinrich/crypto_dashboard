@@ -1,25 +1,61 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import List from './components/List';
+import axios from 'axios';
 import './App.css';
+import BarChart from './components/BarChart';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [cryptos, setCryptos] = useState({});
+
+    const [newCrypto, setNewCrypto] = useState("BTC, ETH, XRP");
+
+    const apiURL = "https://api.nomics.com/v1/currencies/ticker?key=a3d32784b7faaeefea98384862fa0cc2&ids=" + newCrypto + "&interval=1d,30d&per-page=100&page=1";
+
+    const getPosts = async () => {
+        axios.get(apiURL).then((cryptos) => {
+            console.log(cryptos.data);
+            setCryptos({ cryptos: cryptos.data })
+        })
+    }
+
+    useEffect(() => {
+        getPosts();
+    }, []);
+
+
+    return (
+        <div className="App">
+            <div className="container">
+                <h1>Crypto Tracker</h1>
+
+                <div className="cryptos">
+                    <List cryptos={cryptos} />
+                </div>
+
+                <div className="addCryptos">
+                    <p>
+                        Add crypto:
+                    </p>
+                    <input type="input" onBlur={e => setNewCrypto(newCrypto + "," + e.target.value)}/>
+                    <button type="button" onClick={getPosts}>Add +</button>
+                </div>
+
+                <div className="charts">
+                    <BarChart newCrypto={newCrypto}/>
+                </div>
+
+                <footer>
+                    <p>
+                        Crypto Tracker V1
+                    </p>
+                </footer>
+            </div>
+        </div>
+    );
 }
 
 export default App;
+
+

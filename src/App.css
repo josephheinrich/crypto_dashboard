@@ -1,38 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
 .App {
-  text-align: center;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Amiri', serif;
+    overflow: hidden;
+    margin: 0 auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.container h1 {
+    text-align: center;
+    margin-top: 1rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container {
+    position: relative;
+    padding-bottom: 40px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+footer {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 40px;
+    display: flex;
+    align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+footer p {
+    position: relative;
+    top: 50%; 
+    transform: translate(0, -50%);
+    text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.col-4 p {
+    text-align: center;
+}
+
+.cryptoBox .cryptoContent {
+    background-color: lightgray;
+    box-shadow: 3px 3px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+.cryptoContent {
+    padding: 0px 5px 0px 5px;
 }
