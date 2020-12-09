@@ -14,7 +14,7 @@ function App() {
     const apiURL = "https://api.nomics.com/v1/currencies/ticker?key=a3d32784b7faaeefea98384862fa0cc2&ids=" + newCrypto + "&interval=1d,30d&per-page=100&page=1";
 
     const getPosts = async () => {
-        axios.get(apiURL).then((cryptos) => {
+        axios.get(apiURL, {crossdomain: true}).then((cryptos) => {
             console.log(cryptos.data);
             setCryptos({ cryptos: cryptos.data })
         })
