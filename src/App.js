@@ -33,16 +33,18 @@ function App() {
             <div className="container">
                 <h1>Crypto Tracker</h1>
 
-                <div className="cryptos">
-                    <List cryptos={cryptos} />
-                </div>
-
                 <div className="addCryptos">
                     <p>
                         Add crypto:
                     </p>
-                    <input type="input" onBlur={e => setNewCrypto(newCrypto + "," + e.target.value)}/>
+                    <input type="input" onBlur={e => setNewCrypto(newCrypto + "," + e.target.value)} />
                     <button type="button" onClick={getPosts}>Add +</button>
+                    <br />
+                    <br/>
+                </div>
+
+                <div className="cryptos">
+                    <List cryptos={cryptos} />
                 </div>
 
                 <div className="charts">

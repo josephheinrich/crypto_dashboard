@@ -20,7 +20,7 @@ const BarChart = ({ newCrypto }) => {
 
                 cryptoData.forEach(record => {
                     cryptoname.push(record.name);
-                    price.push(record.price);
+                    price.push(record["1d"].price_change);
                 });
 
                 setState({
@@ -28,7 +28,7 @@ const BarChart = ({ newCrypto }) => {
                         labels: cryptoname,
                         datasets: [
                             {
-                                label: 'Current Prices',
+                                label: '1 Day Price Changes',
                                 data: price,
                                 backgroundColor: [
                                     "#3cb371",
